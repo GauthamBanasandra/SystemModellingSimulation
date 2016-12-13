@@ -21,7 +21,7 @@ def get_next(data, digits):
         rand_int = int(random.random() * 10 ** digits)
         for k in ranges.keys():
             if rand_int in k:
-                yield rand_int
+                yield ranges[k]
 
 
 arrival_time = get_next([(1, 0.25), (2, 0.4), (3, 0.2), (4, 0.15)], 2)

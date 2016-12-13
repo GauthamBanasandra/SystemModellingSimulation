@@ -21,7 +21,7 @@ def get_next(data, digits):
         rand_int = int(random.random() * 10 ** digits)
         for k in ranges.keys():
             if rand_int in k:
-                yield rand_int
+                yield ranges[k]
 
 
 service_time = get_next([(1, 0.1), (2, 0.2), (3, 0.3), (4, 0.25), (5, 0.1), (6, 0.05)], 2)
@@ -62,7 +62,7 @@ for j in range(20):
     row[clock] = rows[-1][clock] + row[inter_arrival]
     row[serv_time] = next(service_time)
     row[start_time] = max(rows[-1][end_time], row[clock])
-    row[end_time] = row[clock] + row[serv_time]
+    row[end_time] = row[start_time] + row[serv_time]
     row[queue_time] = row[start_time] - row[clock]
     row[total_time] = row[end_time] - row[start_time]
     row[idle_time] = row[start_time] - rows[-1][end_time]
